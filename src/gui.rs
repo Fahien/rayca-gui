@@ -197,17 +197,62 @@ impl Gui {
         }
     }
 
-    fn egui(&self, size: Size2) -> egui::FullOutput {
-        let mut input = egui::RawInput::default();
+    fn egui(&self, delta: f32, input: &Input, size: Size2) -> egui::FullOutput {
+        let mut raw_input = egui::RawInput::default();
+        raw_input.predicted_dt = delta;
+        if input.w.just_updated() {
+            raw_input.events.push(egui::Event::Key {
+                key: egui::Key::W,
+                physical_key: None,
+                pressed: input.w.is_down(),
+                repeat: false,
+                modifiers: Default::default(),
+            })
+        }
+        if input.s.just_updated() {
+            raw_input.events.push(egui::Event::Key {
+                key: egui::Key::S,
+                physical_key: None,
+                pressed: input.s.is_down(),
+                repeat: false,
+                modifiers: Default::default(),
+            })
+        }
+        let mouse_pos = egui::Pos2 {
+            x: input.mouse.position.x,
+            y: input.mouse.position.y,
+        };
+        if input.mouse.just_moved {
+            raw_input.events.push(egui::Event::PointerMoved(mouse_pos));
+        }
+        if input.mouse.left.just_updated() {
+            raw_input.events.push(egui::Event::PointerButton {
+                pos: mouse_pos,
+                button: egui::PointerButton::Primary,
+                pressed: input.mouse.left.is_down(),
+                modifiers: Default::default(),
+            });
+        }
+        if input.mouse.right.just_updated() {
+            raw_input.events.push(egui::Event::PointerButton {
+                pos: mouse_pos,
+                button: egui::PointerButton::Secondary,
+                pressed: input.mouse.right.is_down(),
+                modifiers: Default::default(),
+            });
+        }
 
-        input.screen_rect.replace(egui::Rect::from_min_size(
+        raw_input.screen_rect.replace(egui::Rect::from_min_size(
             Default::default(),
             egui::Vec2::new(size.width as f32, size.height as f32),
         ));
 
-        self.ctx.begin_pass(input);
+        self.ctx.begin_pass(raw_input);
 
-        egui::Window::new("Title").show(&self.ctx, |ui| ui.label("Text"));
+        egui::Window::new("Title")
+            .auto_sized()
+            .collapsible(false)
+            .show(&self.ctx, |ui| ui.label("Text"));
 
         self.ctx.end_pass()
     }
@@ -267,12 +312,12 @@ impl Gui {
 
     /// This might update textures and primitives, so it should be
     /// called before beginning the render pass
-    pub fn update(&mut self, frame: &mut Frame) {
+    pub fn update(&mut self, delta: f32, input: &Input, frame: &mut Frame) {
         let egui::FullOutput {
             shapes,
             textures_delta,
             ..
-        } = self.egui(frame.get_size());
+        } = self.egui(delta, input, frame.get_size());
 
         self.update_textures(frame, &textures_delta);
         self.update_primitives(frame.id, shapes);
