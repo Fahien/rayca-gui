@@ -1279,7 +1279,7 @@ dependencies = [
 [[package]]
 name = "rayca-core"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-core#b9a8967f9c39fa4d28b927ab562c802474dce730"
+source = "git+https://github.com/Fahien/rayca-core#785282c1f521cebf21357a8a56506a3c580078c4"
 dependencies = [
  "ash",
  "png",
@@ -1303,7 +1303,7 @@ dependencies = [
 [[package]]
 name = "rayca-gltf"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-gltf#fbaf8986e386b192755e7626a3f81fcc2da0a670"
+source = "git+https://github.com/Fahien/rayca-gltf#6b5c9bf70d9617ca93c21f7cf49a42cf7f0ab4b8"
 dependencies = [
  "rayca-math",
  "rayca-util",
@@ -1343,7 +1343,7 @@ dependencies = [
 [[package]]
 name = "rayca-util"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-util#d4e2747958997e7389e5573890cd95470e694286"
+source = "git+https://github.com/Fahien/rayca-util#459d17ff1060d42ffcaacbc9fd5ce8c96a4c13dd"
 dependencies = [
  "instant",
  "owo-colors",
