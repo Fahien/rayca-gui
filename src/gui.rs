@@ -292,12 +292,6 @@ impl Gui {
                 continue;
             };
 
-            let mut indices = Vec::default();
-            for index in &mesh.indices {
-                assert!(*index < u16::MAX as u32);
-                indices.push(*index as u16);
-            }
-
             // Update primitive
             let primitives = &mut self.primitives[frame_id];
             if i >= primitives.len() {
@@ -306,7 +300,7 @@ impl Gui {
                 primitives.push(primitive);
             }
             primitives[i].vertices.upload_arr(&mesh.vertices);
-            primitives[i].set_indices(&indices);
+            primitives[i].set_indices(mesh.indices.as_bytes(), vk::IndexType::UINT32);
         }
     }
 
