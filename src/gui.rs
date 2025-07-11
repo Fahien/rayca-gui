@@ -323,7 +323,7 @@ impl Gui {
         // Draw with Vulkan pipeline
         self.pipeline.bind(&frame.cache);
 
-        frame.set_viewport_and_scissor(1.0);
+        frame.set_viewport_and_scissor(1.0, false);
 
         let screen_size: Vec2 = frame.get_size().into();
         self.pipeline
