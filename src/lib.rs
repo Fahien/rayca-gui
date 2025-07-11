@@ -4,3 +4,5 @@
 
 mod gui;
 pub use gui::*;
+
+pub use egui;

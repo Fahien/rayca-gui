@@ -158,8 +158,10 @@ impl GuiFont {
 pub struct Gui {
     /// Initialized after the first egui update
     font: Option<GuiFont>,
+
     /// Primitives might change every frame, hence we keep multiple collection
     primitives: Vec<Vec<RenderPrimitive>>,
+
     ctx: egui::Context,
     pipeline: PipelineGui,
     allocator: Rc<vk_mem::Allocator>,
@@ -201,7 +203,7 @@ impl Gui {
         }
     }
 
-    fn egui(&self, delta: f32, input: &Input, size: Size2) -> egui::FullOutput {
+    pub fn begin(&self, delta: f32, input: &Input, size: Size2) -> &egui::Context {
         let mut raw_input = egui::RawInput::default();
         raw_input.predicted_dt = delta;
         if input.w.just_updated() {
@@ -253,12 +255,7 @@ impl Gui {
 
         self.ctx.begin_pass(raw_input);
 
-        egui::Window::new("Title")
-            .auto_sized()
-            .collapsible(false)
-            .show(&self.ctx, |ui| ui.label("Text"));
-
-        self.ctx.end_pass()
+        &self.ctx
     }
 
     fn update_textures(&mut self, frame: &mut Frame, textures_delta: &egui::TexturesDelta) {
@@ -310,12 +307,12 @@ impl Gui {
 
     /// This might update textures and primitives, so it should be
     /// called before beginning the render pass
-    pub fn update(&mut self, delta: f32, input: &Input, frame: &mut Frame) {
+    pub fn end(&mut self, frame: &mut Frame) {
         let egui::FullOutput {
             shapes,
             textures_delta,
             ..
-        } = self.egui(delta, input, frame.get_size());
+        } = self.ctx.end_pass();
 
         self.update_textures(frame, &textures_delta);
         self.update_primitives(frame.id, shapes);
