@@ -1279,13 +1279,14 @@ dependencies = [
 [[package]]
 name = "rayca-core"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-core#d957b13a7c3d5b9cf5a7a83953a953568226ed62"
+source = "git+https://github.com/Fahien/rayca-core#c78c18010707113c7e11473bd9b44d9ca095fb46"
 dependencies = [
  "ash",
  "png",
  "raw-window-metal",
  "rayca-geometry",
  "rayca-gltf",
+ "rayca-pipe",
  "slang",
  "vk-mem",
  "winit",

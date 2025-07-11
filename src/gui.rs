@@ -66,13 +66,17 @@ impl VertexInput for EguiVertex {
                 .dst_color_blend_factor(vk::BlendFactor::ONE_MINUS_SRC_ALPHA),
         ]
     }
+
+    fn get_subpass() -> u32 {
+        1
+    }
 }
 
 impl RenderPipeline for PipelineGui {
     fn render(
         &self,
         _frame: &mut Frame,
-        _model: &RenderModel,
+        _model: Option<&RenderModel>,
         _camera_nodes: &[Handle<Node>],
         _nodes: &[Handle<Node>],
     ) {
