@@ -2,7 +2,7 @@
 // Author: Antonio Caggiano <info@antoniocaggiano.eu>
 // SPDX-License-Identifier: MIT
 
-use std::rc::Rc;
+use std::sync::Arc;
 
 use memoffset::offset_of;
 use rayca_core::*;
@@ -98,7 +98,7 @@ pub struct GuiFont {
 
 impl GuiTexture {
     pub fn new(
-        allocator: &Rc<vk_mem::Allocator>,
+        allocator: &Arc<vk_mem::Allocator>,
         command_buffer: &CommandBuffer,
         data: &[u8],
         width: u32,
@@ -135,7 +135,7 @@ impl GuiTexture {
 
 impl GuiFont {
     pub fn new(
-        allocator: &Rc<vk_mem::Allocator>,
+        allocator: &Arc<vk_mem::Allocator>,
         frame: &mut Frame,
         data: &[u8],
         width: u32,
@@ -164,14 +164,14 @@ pub struct Gui {
 
     ctx: egui::Context,
     pipeline: PipelineGui,
-    allocator: Rc<vk_mem::Allocator>,
+    allocator: Arc<vk_mem::Allocator>,
 }
 
 impl Gui {
     pub fn new(
         #[cfg(target_os = "android")] android_app: &AndroidApp,
         in_flight_frames: usize,
-        allocator: &Rc<vk_mem::Allocator>,
+        allocator: &Arc<vk_mem::Allocator>,
         pass: &Pass,
     ) -> Self {
         let pipeline = PipelineGui::new::<EguiVertex>(
