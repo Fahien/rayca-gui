@@ -325,9 +325,12 @@ impl Gui {
 
         frame.set_viewport_and_scissor(1.0, false);
 
-        let screen_size: Vec2 = frame.get_size().into();
+        let constant = PushConstant {
+            screen_size: frame.get_size().into(),
+        };
         self.pipeline
-            .push_screen_size(&frame.cache.command_buffer, &screen_size);
+            .push_constant(&frame.cache.command_buffer, &constant);
+
         let key = DescriptorKey::builder()
             .layout(self.pipeline.get_layout())
             .build();
@@ -337,8 +340,25 @@ impl Gui {
             key,
             &self.font.as_ref().unwrap().textures[frame.id].texture,
         );
+
         for primitive in &self.primitives[frame.id] {
             self.pipeline.draw(&frame.cache, primitive);
+        }
+    }
+}
+
+#[repr(C, align(16))]
+struct PushConstant {
+    screen_size: Vec2,
+}
+
+impl AsBytes for PushConstant {
+    fn as_bytes(&self) -> &[u8] {
+        unsafe {
+            std::slice::from_raw_parts(
+                self as *const Self as *const u8,
+                std::mem::size_of::<Self>(),
+            )
         }
     }
 }

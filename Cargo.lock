@@ -1039,9 +1039,9 @@ checksum = "32a282da65faaf38286cf3be983213fcf1d2e2a58700e808f83f4ea9a4804bc0"
 
 [[package]]
 name = "memmap2"
-version = "0.9.5"
+version = "0.9.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fd3f7eed9d3848f8b98834af67102b720745c4ec028fcd0aa0239277e7de374f"
+checksum = "483758ad303d734cec05e5c12b41d7e93e6a6390c5e9dae6bdeb7c1259012d28"
 dependencies = [
  "libc",
 ]
@@ -1813,7 +1813,7 @@ dependencies = [
 [[package]]
 name = "rayca-core"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-core#6daa48af388b6a0ed2eac70245351fa7131ae2ce"
+source = "git+https://github.com/Fahien/rayca-core#5190e498324aab6b01b6ab44c0edd5c285354de5"
 dependencies = [
  "ash",
  "image",
@@ -1839,7 +1839,7 @@ dependencies = [
 [[package]]
 name = "rayca-gltf"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-gltf#74fe23eb3194373395c7fdd9640a425bfbf856f7"
+source = "git+https://github.com/Fahien/rayca-gltf#344a95fe25ce3d3134c4cb8b3dbe28a64ad860c7"
 dependencies = [
  "base64 0.22.1",
  "gltf",
@@ -1861,7 +1861,7 @@ dependencies = [
 [[package]]
 name = "rayca-math"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-math#31982d8e844704a337ec8a4f6b18c6418fee2088"
+source = "git+https://github.com/Fahien/rayca-math#440886b8789f8fa0a498622db0a91e59119e85b0"
 dependencies = [
  "num-traits",
  "rand 0.9.1",
@@ -1871,7 +1871,7 @@ dependencies = [
 [[package]]
 name = "rayca-pipe"
 version = "0.0.1"
-source = "git+https://github.com/Fahien/rayca-pipe#7f5d679ab4a446c0314ec412d97af3217f080495"
+source = "git+https://github.com/Fahien/rayca-pipe#2764e7596ddda92ffcb4f0d2419bf2274bb94359"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1882,10 +1882,11 @@ dependencies = [
 [[package]]
 name = "rayca-util"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-util#459d17ff1060d42ffcaacbc9fd5ce8c96a4c13dd"
+source = "git+https://github.com/Fahien/rayca-util#56c9d34af43c517206b0bb291eb77306e510e976"
 dependencies = [
  "instant",
  "owo-colors",
+ "winit",
 ]
 
 [[package]]
@@ -2110,7 +2111,7 @@ checksum = "04dc19736151f35336d325007ac991178d504a119863a2fcb3758cdb5e52c50d"
 [[package]]
 name = "slang"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/slang-rs#5b9463cebc14ba60cf47f40ee1cab61c831c12fa"
+source = "git+https://github.com/Fahien/slang-rs#a43d5e676b86a8f8fd2a5b054c9bcba55d3d2199"
 dependencies = [
  "slang-sys",
 ]
@@ -2118,7 +2119,7 @@ dependencies = [
 [[package]]
 name = "slang-sys"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/slang-rs#5b9463cebc14ba60cf47f40ee1cab61c831c12fa"
+source = "git+https://github.com/Fahien/slang-rs#a43d5e676b86a8f8fd2a5b054c9bcba55d3d2199"
 dependencies = [
  "bindgen",
 ]
