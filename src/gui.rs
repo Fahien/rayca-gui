@@ -325,9 +325,14 @@ impl Gui {
 
         frame.set_viewport_and_scissor(1.0, false);
 
-        let screen_size: Vec2 = frame.get_size().into();
+        let constants = PushConstant {
+            proj: Swapchain::get_prerotation_trs(frame.current_transform).to_mat4(),
+            screen_size: frame.get_size().into(),
+        };
+
         self.pipeline
-            .push_screen_size(&frame.cache.command_buffer, &screen_size);
+            .push_constants(&frame.cache.command_buffer, constants.as_bytes());
+
         let key = DescriptorKey::builder()
             .layout(self.pipeline.get_layout())
             .build();
@@ -337,8 +342,21 @@ impl Gui {
             key,
             &self.font.as_ref().unwrap().textures[frame.id].texture,
         );
+
         for primitive in &self.primitives[frame.id] {
             self.pipeline.draw(&frame.cache, primitive);
         }
+    }
+}
+
+#[repr(C)]
+struct PushConstant {
+    proj: Mat4,
+    screen_size: Size2,
+}
+
+impl PushConstant {
+    fn as_bytes(&self) -> &[u8; 80] {
+        unsafe { std::mem::transmute(self) }
     }
 }
