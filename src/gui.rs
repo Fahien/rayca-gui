@@ -98,7 +98,7 @@ pub struct GuiFont {
 
 impl GuiTexture {
     pub fn new(
-        allocator: &Arc<vk_mem::Allocator>,
+        allocator: &Arc<Allocator>,
         command_buffer: &CommandBuffer,
         data: &[u8],
         width: u32,
@@ -135,7 +135,7 @@ impl GuiTexture {
 
 impl GuiFont {
     pub fn new(
-        allocator: &Arc<vk_mem::Allocator>,
+        allocator: &Arc<Allocator>,
         frame: &mut Frame,
         data: &[u8],
         width: u32,
@@ -164,14 +164,14 @@ pub struct Gui {
 
     ctx: egui::Context,
     pipeline: PipelineGui,
-    allocator: Arc<vk_mem::Allocator>,
+    allocator: Arc<Allocator>,
 }
 
 impl Gui {
     pub fn new(
         #[cfg(target_os = "android")] android_app: &AndroidApp,
         in_flight_frames: usize,
-        allocator: &Arc<vk_mem::Allocator>,
+        allocator: &Arc<Allocator>,
         pass: &Pass,
     ) -> Self {
         let pipeline = PipelineGui::new::<EguiVertex>(

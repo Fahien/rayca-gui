@@ -1813,7 +1813,7 @@ dependencies = [
 [[package]]
 name = "rayca-core"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-core#b88a5461faee74d1469cd15c1f0ccbc555dbeb75"
+source = "git+https://github.com/Fahien/rayca-core#8e743db888b6ef20f6c7f40e0a6fabde1ab12b65"
 dependencies = [
  "ash",
  "image",
@@ -1822,6 +1822,7 @@ dependencies = [
  "rayca-geometry",
  "rayca-gltf",
  "rayca-pipe",
+ "rayon",
  "slang",
  "vk-mem",
  "winit",
@@ -1871,7 +1872,7 @@ dependencies = [
 [[package]]
 name = "rayca-pipe"
 version = "0.0.1"
-source = "git+https://github.com/Fahien/rayca-pipe#84b5dd47abc92f6fd846963b88e6a3611d2ccbd3"
+source = "git+https://github.com/Fahien/rayca-pipe#7a5ba827a7436624e1148bcd4cb73293214e648b"
 dependencies = [
  "proc-macro2",
  "quote",
