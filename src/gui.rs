@@ -105,7 +105,7 @@ impl GuiTexture {
         height: u32,
     ) -> Self {
         let image = RenderImage::sampled(allocator, width, height, vk::Format::R8G8B8A8_UNORM);
-        let view = ImageView::new(&command_buffer.device, &image);
+        let view = ImageView::new(&image);
         let sampler = RenderSampler::new(&command_buffer.device);
 
         let texture = RenderTexture::new(&view, &sampler);
