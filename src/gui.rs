@@ -228,7 +228,7 @@ impl Gui {
             x: input.mouse.position.x,
             y: input.mouse.position.y,
         };
-        if input.mouse.just_moved {
+        if input.mouse.movement != Vec2::ZERO {
             raw_input.events.push(egui::Event::PointerMoved(mouse_pos));
         }
         if input.mouse.left.just_updated() {

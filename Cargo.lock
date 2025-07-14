@@ -420,9 +420,9 @@ dependencies = [
 
 [[package]]
 name = "crc32fast"
-version = "1.4.2"
+version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a97769d94ddab943e4510d138150169a2758b5ef3eb191a9ee688de3e23ef7b3"
+checksum = "9481c1c90cbf2ac953f07c8d4a58aa3945c425b7185c9154d67a65e4230da511"
 dependencies = [
  "cfg-if",
 ]
@@ -1813,7 +1813,7 @@ dependencies = [
 [[package]]
 name = "rayca-core"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-core#5190e498324aab6b01b6ab44c0edd5c285354de5"
+source = "git+https://github.com/Fahien/rayca-core#b88a5461faee74d1469cd15c1f0ccbc555dbeb75"
 dependencies = [
  "ash",
  "image",
@@ -1830,7 +1830,7 @@ dependencies = [
 [[package]]
 name = "rayca-geometry"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-geometry#2ca5d37ada15b6aa6d78bc35ff230ecbba7ca126"
+source = "git+https://github.com/Fahien/rayca-geometry#e18ea6a334d783e3df4078ea7cd8aa74a5afded0"
 dependencies = [
  "rayca-math",
  "rayca-util",
@@ -1839,7 +1839,7 @@ dependencies = [
 [[package]]
 name = "rayca-gltf"
 version = "0.1.0"
-source = "git+https://github.com/Fahien/rayca-gltf#344a95fe25ce3d3134c4cb8b3dbe28a64ad860c7"
+source = "git+https://github.com/Fahien/rayca-gltf#352a54087f86ff3c4dffb3dc711fb422c1c06d9b"
 dependencies = [
  "base64 0.22.1",
  "gltf",
@@ -1871,7 +1871,7 @@ dependencies = [
 [[package]]
 name = "rayca-pipe"
 version = "0.0.1"
-source = "git+https://github.com/Fahien/rayca-pipe#2764e7596ddda92ffcb4f0d2419bf2274bb94359"
+source = "git+https://github.com/Fahien/rayca-pipe#84b5dd47abc92f6fd846963b88e6a3611d2ccbd3"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1958,9 +1958,9 @@ checksum = "2b15c43186be67a4fd63bee50d0303afffcef381492ebe2c5d87f324e1b8815c"
 
 [[package]]
 name = "rgb"
-version = "0.8.51"
+version = "0.8.52"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a457e416a0f90d246a4c3288bd7a25b2304ca727f253f95be383dd17af56be8f"
+checksum = "0c6a884d2998352bb4daf0183589aec883f16a6da1f4dde84d8e2e9a5409a1ce"
 
 [[package]]
 name = "rustc-hash"
