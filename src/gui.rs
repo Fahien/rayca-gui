@@ -78,7 +78,7 @@ impl RenderPipeline for PipelineGui {
         _frame: &mut Frame,
         _model: Option<&RenderModel>,
         _camera_nodes: &[Handle<Node>],
-        _nodes: &[Handle<Node>],
+        _infos: &[DrawInfo],
     ) {
     }
 }
