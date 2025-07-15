@@ -6,6 +6,7 @@ import vertex;
 
 struct PushConstant
 {
+    float4x4 pretransform;
     float2 screen_size;
 }
 
@@ -20,7 +21,7 @@ Vertex main(float2 pos, float2 uv, float4 color)
                               2.0 * pos.y / constant.screen_size.y - 1.0,
                               0.0,
                               1.0);
-    out.pos = model_pos;
+    out.pos = mul(constant.pretransform, model_pos);
     out.color = color;
     out.uv = uv;
     return out;

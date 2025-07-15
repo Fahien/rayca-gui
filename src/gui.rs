@@ -318,6 +318,20 @@ impl Gui {
         self.update_primitives(frame.id, shapes);
     }
 
+    fn get_prerotation_trs(current_transform: vk::SurfaceTransformFlagsKHR) -> Trs {
+        let angle_radians = std::f32::consts::PI
+            * match current_transform {
+                vk::SurfaceTransformFlagsKHR::ROTATE_90 => 0.5,
+                vk::SurfaceTransformFlagsKHR::ROTATE_270 => 1.5,
+                vk::SurfaceTransformFlagsKHR::ROTATE_180 => 1.0,
+                _ => 0.0,
+            };
+
+        Trs::builder()
+            .rotation(Quat::axis_angle(Vec3::Z_AXIS, angle_radians))
+            .build()
+    }
+
     /// To be called after `self.update()`
     pub fn draw(&self, frame: &mut Frame) {
         // Draw with Vulkan pipeline
@@ -325,8 +339,20 @@ impl Gui {
 
         frame.set_viewport_and_scissor(1.0, false);
 
+        let size = frame.get_size();
+
+        let (width, height) = if frame.current_transform == vk::SurfaceTransformFlagsKHR::ROTATE_90
+            || frame.current_transform == vk::SurfaceTransformFlagsKHR::ROTATE_270
+        {
+            // Swap width and height for 90/270 degrees rotation
+            (size.height, size.width)
+        } else {
+            (size.width, size.height)
+        };
+
         let constant = PushConstant {
-            screen_size: frame.get_size().into(),
+            pretransform: Self::get_prerotation_trs(frame.current_transform).to_mat4(),
+            screen_size: Vec2::new(width as f32, height as f32),
         };
         self.pipeline
             .push_constant(&frame.cache.command_buffer, &constant);
@@ -349,6 +375,7 @@ impl Gui {
 
 #[repr(C, align(16))]
 struct PushConstant {
+    pretransform: Mat4,
     screen_size: Vec2,
 }
 
