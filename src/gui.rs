@@ -76,9 +76,9 @@ impl RenderPipeline for PipelineGui {
     fn render(
         &self,
         _frame: &mut Frame,
-        _model: Option<&RenderModel>,
-        _camera_nodes: &[Handle<Node>],
-        _infos: &[DrawInfo],
+        _scene: &RenderScene,
+        _camera_infos: &[CameraDrawInfo],
+        _infos: Vec<DrawInfo>,
     ) {
     }
 }
