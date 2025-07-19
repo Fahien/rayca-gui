@@ -4,9 +4,9 @@ version = 4
 
 [[package]]
 name = "ab_glyph"
-version = "0.2.30"
+version = "0.2.31"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1e0f4f6fbdc5ee39f2ede9f5f3ec79477271a6d6a2baff22310d51736bda6cea"
+checksum = "e074464580a518d16a7126262fffaaa47af89d4099d4cb403f8ed938ba12ee7d"
 dependencies = [
  "ab_glyph_rasterizer",
  "owned_ttf_parser",
@@ -296,9 +296,9 @@ dependencies = [
 
 [[package]]
 name = "cc"
-version = "1.2.29"
+version = "1.2.30"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5c1599538de2394445747c8cf7935946e3cc27e9625f889d979bfb2aaf569362"
+checksum = "deec109607ca693028562ed836a5f1c4b8bd77755c4e132fc5ce11b0b6211ae7"
 dependencies = [
  "jobserver",
  "libc",
@@ -975,13 +975,13 @@ dependencies = [
 
 [[package]]
 name = "libredox"
-version = "0.1.4"
+version = "0.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1580801010e535496706ba011c15f8532df6b42297d2e471fec38ceadd8c0638"
+checksum = "4488594b9328dee448adb906d8b126d9b7deb7cf5c22161ee591610bb1be83c0"
 dependencies = [
  "bitflags 2.9.1",
  "libc",
- "redox_syscall 0.5.13",
+ "redox_syscall 0.5.14",
 ]
 
 [[package]]
@@ -1511,7 +1511,7 @@ checksum = "bc838d2a56b5b1a6c25f55575dfc605fabb63bb2365f6c2353ef9159aa69e4a5"
 dependencies = [
  "cfg-if",
  "libc",
- "redox_syscall 0.5.13",
+ "redox_syscall 0.5.14",
  "smallvec",
  "windows-targets 0.52.6",
 ]
@@ -1575,17 +1575,16 @@ dependencies = [
 
 [[package]]
 name = "polling"
-version = "3.8.0"
+version = "3.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b53a684391ad002dd6a596ceb6c74fd004fdce75f4be2e3f615068abbea5fd50"
+checksum = "8ee9b2fa7a4517d2c91ff5bc6c297a427a96749d15f98fcdbb22c05571a4d4b7"
 dependencies = [
  "cfg-if",
  "concurrent-queue",
  "hermit-abi",
  "pin-project-lite",
  "rustix 1.0.8",
- "tracing",
- "windows-sys 0.59.0",
+ "windows-sys 0.60.2",
 ]
 
 [[package]]
@@ -1813,7 +1812,7 @@ dependencies = [
 [[package]]
 name = "rayca-core"
 version = "0.1.0"
-source = "git+https://github.com/fahien/rayca-core.git#4880bfb419ca71ece082cdcc078914e5b9839c0f"
+source = "git+https://github.com/fahien/rayca-core.git#3d11083ed63b8a70a60105307ec8c53318f2cbb5"
 dependencies = [
  "ash",
  "image",
@@ -1840,13 +1839,15 @@ dependencies = [
 [[package]]
 name = "rayca-gltf"
 version = "0.1.0"
-source = "git+https://github.com/fahien/rayca-gltf.git#edbd8ff8db26d1cd82b720a1139783f6e1bd30e4"
+source = "git+https://github.com/fahien/rayca-gltf.git#6ce47539453f7b7a88b28fc8075608268f2a68fe"
 dependencies = [
  "base64 0.22.1",
  "gltf",
  "rayca-geometry",
  "rayca-math",
  "rayca-util",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -1862,17 +1863,18 @@ dependencies = [
 [[package]]
 name = "rayca-math"
 version = "0.1.0"
-source = "git+https://github.com/fahien/rayca-math.git#440886b8789f8fa0a498622db0a91e59119e85b0"
+source = "git+https://github.com/fahien/rayca-math.git#436eb76571f14d3c936693e6c45dd1c38ab465d6"
 dependencies = [
  "num-traits",
  "rand 0.9.1",
  "serde",
+ "serde_json",
 ]
 
 [[package]]
 name = "rayca-pipe"
 version = "0.0.1"
-source = "git+https://github.com/fahien/rayca-pipe.git#d8ded92332a879661bf6945c6d5b4924a855c329"
+source = "git+https://github.com/fahien/rayca-pipe.git#b6ab2dbd6b57cd6c5a6620d9ae71411244f41265"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1883,10 +1885,12 @@ dependencies = [
 [[package]]
 name = "rayca-util"
 version = "0.1.0"
-source = "git+https://github.com/fahien/rayca-util.git#7be78f38245f9df10e0c028fc322c493545ec791"
+source = "git+https://github.com/fahien/rayca-util.git#f31b100d8b95bd5b46bdbd0f5d78421fe18174d0"
 dependencies = [
  "instant",
  "owo-colors",
+ "serde",
+ "serde_json",
  "winit",
 ]
 
@@ -1921,9 +1925,9 @@ dependencies = [
 
 [[package]]
 name = "redox_syscall"
-version = "0.5.13"
+version = "0.5.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0d04b7d0ee6b4a0207a0a7adb104d23ecb0b47d6beae7152d0fa34b692b29fd6"
+checksum = "de3a5d9f0aba1dbcec1cc47f0ff94a4b778fe55bca98a6dfa92e4e094e57b1c4"
 dependencies = [
  "bitflags 2.9.1",
 ]
@@ -2063,9 +2067,9 @@ dependencies = [
 
 [[package]]
 name = "serde_json"
-version = "1.0.140"
+version = "1.0.141"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "20068b6e96dc6c9bd23e01df8827e6c7e1f2fddd43c21810382803c136b99373"
+checksum = "30b9eff21ebe718216c6ec64e1d9ac57087aad11efc64e32002bce4a0d4c03d3"
 dependencies = [
  "itoa",
  "memchr",

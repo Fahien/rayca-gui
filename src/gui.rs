@@ -84,7 +84,7 @@ impl RenderPipeline for PipelineGui {
 }
 
 pub struct GuiTexture {
-    staging: Buffer,
+    staging: RenderBuffer,
     texture: RenderTexture,
     _sampler: RenderSampler,
     _view: ImageView,
@@ -110,7 +110,7 @@ impl GuiTexture {
 
         let texture = RenderTexture::new(&view, &sampler);
 
-        let staging = Buffer::new_with_size(
+        let staging = RenderBuffer::new_with_size(
             allocator,
             vk::BufferUsageFlags::TRANSFER_SRC,
             data.len() as u64,
